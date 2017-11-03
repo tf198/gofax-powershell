@@ -6,13 +6,15 @@ Obviously you need an account with GoFax for this to work...
 
 The following powershell functions are currently included:
 
-	$ . <install-location>\gofax.ps1
-	
-	$ Send-GoFax -Token <GUID> -FaxNumber 50123456 -Email me@myplace.net C:\file1.pdf C:\file2.pdf
-	
-	$ Create-GoFaxToken <username>
+```PowerShell
+. C:\pathto\gofax-powershell\gofax.ps1
 
-	$ Check-GoFaxAccess -Token <GUID>
+Send-GoFax -Token $token -FaxNumber 50123456 -Email me@myplace.net C:\file1.pdf C:\file2.pdf
+
+Create-GoFaxToken $username
+
+Check-GoFaxAccess -Token $token
+```
 
 Have a look at the help for more options.
 
@@ -24,19 +26,21 @@ After cloning the repo, create a shortcut in `shell:sendto`. Leave the window st
 
 You then need to create a user specific settings file in `%APPDATA%\GoFax\settings.xml`
 
-	<?xml version="1.0">
-	<config>
-		<token>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</token>
-		<email>me@example.com</email>
-		<processed>C:\Users\Me\Documents\Faxes\Sent</processed>
-	</config>
+```xml
+<?xml version="1.0">
+<config>
+	<token>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</token>
+	<email>me@example.com</email>
+	<processed>C:\Users\Me\Documents\Faxes\Sent</processed>
+</config>
+```
 
 The `<processed>` setting is optional - if present it will give you the option
 of moving the files sent to the given folder with a date based name.
 
 Then you should be good to go.  Any issues, switch the link to `-windowstyle normal`.
 
-### Limitatations ###
+### Limitations ###
 
 There are multiple methods available to submit faxes in the v1 GoFax API. 
 Unfortunately the one that allows you to submit multiple files, `SendFax()` 
