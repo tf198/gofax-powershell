@@ -1,12 +1,14 @@
 ## GoFax Powershell ##
 
+*This is work-in-progress - not suitable for production use yet...*
+
 A few powershell functions and a SendTo script for the Australian
 GoFax service using their v1 API.
 Obviously you need an account with GoFax for this to work...
 
 The following powershell functions are currently included:
 
-```PowerShell
+```Bash
 . C:\pathto\gofax-powershell\gofax.ps1
 
 Send-GoFax -Token $token -FaxNumber 50123456 -Email me@myplace.net C:\file1.pdf C:\file2.pdf
